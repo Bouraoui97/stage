@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %} 
+
+<style>
+.myButton {
+	box-shadow: 0px 10px 14px -7px #3dc21b;
+	background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+	background-color:#44c767;
+	border-radius:4px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Times New Roman;
+	font-size:17px;
+	font-style:italic;
+	padding:7px 13px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #2f6627;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+</style>
+
+
+   <h2>Liste des unités</h2>  
+
+   
+         <a href="/addunite" class="myButton">Ajouter</a>
+      
+   &nbsp;
+   &nbsp;
+   &nbsp;
+   
+   <table border ="2" class = "table">  
+      <tr>  
+         
+         <th>ID</th>  
+         <th>Name</th>  
+         <th>Emplacement</th> 
+         <th>Supprimer</th>
+         <th>Mettre à jour</th>
+         <th>Consulter</th>
+      </tr>  
+      {% for u in Unite %} 
+      <tr>  
+      
+         <td>{{ u.id }}</td>   
+         <td>{{ u.nom }}</td>
+         <td>{{ u.emplacement }}</td>  
+         <td><a href="{{ path('deleteunite',{'id':u.id}) }}">Supprimer</a></td> 
+         <td><a href="{{ path('updateunite',{'id':u.id}) }}">Mettre à jour</a></td> 
+         <td><a href="{{ path('afficheunite',{'id':u.id}) }}">Consulter</a></td> 
+         
+         
+      </tr>  
+      {% endfor %} 
+   </table> 
+{% endblock %}  
+
